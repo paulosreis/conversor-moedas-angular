@@ -1,0 +1,28 @@
+.listagem-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+
+    .title {
+        text-align: center;
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+
+    .loading-spinner {
+        display: block;
+        margin: 0 auto;
+        width: 50px;
+        height: 50px;
+    }
+
+    .currency-table {
+        width: 100%;
+        margin: 0 auto;
+        border: none;
+        font-size: 0.9rem;
+
+        @media (max-width: 768px) {
+            font-size: 0.8rem;
+        }
+    }
+}
