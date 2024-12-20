@@ -1,1 +1,33 @@
-<p>conversao works!</p>
+<div class="conversao-container">
+    <h2 class="title">Conversão de Moedas</h2>
+
+    <p-message *ngIf="error" severity="error" text="{{ error }}"></p-message>
+
+    <p-card>
+        <form (ngSubmit)="convert()">
+            <div class="form-group">
+                <label for="from">Moeda de Origem</label>
+                <p-dropdown id="from" [options]="currencies" optionLabel="description" [(ngModel)]="from" name="from"
+                    placeholder="Selecione uma moeda"></p-dropdown>
+            </div>
+
+            <div class="form-group">
+                <label for="to">Moeda de Destino</label>
+                <p-dropdown id="to" [options]="currencies" optionLabel="description" [(ngModel)]="to" name="to"
+                    placeholder="Selecione uma moeda"></p-dropdown>
+            </div>
+
+            <div class="form-group">
+                <label for="amount">Valor</label>
+                <p-inputNumber [(ngModel)]="amount" id="amount" name="amount" [min]="0" mode="decimal"
+                    useGrouping="true"></p-inputNumber>
+            </div>
+
+            <p-button label="Converter" type="submit"></p-button>
+        </form>
+    </p-card>
+
+    <div *ngIf="result" class="result">
+        <p>Resultado: {{ result }}</p>
+    </div>
+</div>

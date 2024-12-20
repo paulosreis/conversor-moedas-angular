@@ -1,11 +1,64 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
+import { MessageModule } from 'primeng/message';
+import { ExchangeService } from '../../services/exchange.service';
 
 @Component({
   selector: 'app-conversao',
-  imports: [],
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    DropdownModule,
+    InputNumberModule,
+    ButtonModule,
+    CardModule,
+    MessageModule,
+  ],
   templateUrl: './conversao.component.html',
-  styleUrl: './conversao.component.scss'
+  styleUrls: ['./conversao.component.scss'],
 })
 export class ConversaoComponent {
+  from = '';
+  to = '';
+  amount: number | null = null;
+  result: number | null = null;
+  currencies: { code: string; description: string }[] = [];
+  error: string | null = null;
 
+  constructor(private exchangeService: ExchangeService) { }
+
+  ngOnInit(): void {
+    this.exchangeService.getCurrencies().subscribe({
+      next: (response) => {
+        this.currencies = response.supported_codes.map((code: any) => ({
+          code: code[0],
+          description: code[1],
+        }));
+      },
+      error: (err) => {
+        this.error = 'Erro ao carregar as moedas';
+      }
+    });
+  }
+
+  convert(): void {
+    if (this.from && this.to && this.amount) {
+      this.exchangeService.convert(this.from, this.to, this.amount).subscribe({
+        next: (response) => {
+          this.result = response.result;
+        },
+        error: (err) => {
+          this.error = 'Erro ao realizar a conversão';
+        }
+      });
+    } else {
+      this.error = 'Por favor, preencha todos os campos';
+    }
+  }
 }
