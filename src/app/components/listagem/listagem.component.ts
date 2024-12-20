@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ExchangeService } from '../../services/exchange.service';
 import { CommonModule } from '@angular/common';
 import { TableModule } from 'primeng/table';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { MessageModule } from 'primeng/message';
+import { CardModule } from 'primeng/card';
+import { ExchangeService } from '../../services/exchange.service';
 
 @Component({
   selector: 'app-listagem',
@@ -13,13 +14,14 @@ import { MessageModule } from 'primeng/message';
     TableModule,
     ProgressSpinnerModule,
     MessageModule,
+    CardModule,
   ],
   templateUrl: './listagem.component.html',
   styleUrls: ['./listagem.component.scss'],
 })
 export class ListagemComponent implements OnInit {
-  currencies: { code: string; description: string }[] = [];
-  loading: boolean = true;
+  currencies: any[] = [];
+  loading = true;
   error: string | null = null;
 
   constructor(private exchangeService: ExchangeService) { }
@@ -34,10 +36,9 @@ export class ListagemComponent implements OnInit {
         this.loading = false;
       },
       error: (err) => {
-        this.error = 'Erro ao carregar a lista de moedas. Tente novamente mais tarde.';
+        this.error = 'Erro ao carregar as moedas';
         this.loading = false;
-        console.error('Erro ao buscar moedas:', err);
-      },
+      }
     });
   }
 }
