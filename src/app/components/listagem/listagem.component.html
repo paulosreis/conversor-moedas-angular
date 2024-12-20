@@ -5,8 +5,8 @@
 
     <p-message *ngIf="error" severity="error" text="{{ error }}"></p-message>
 
-    <p-card class="listagem-card">
-        <p-table *ngIf="!loading && !error" [value]="currencies" class="currency-table" responsiveLayout="scroll">
+    <p-card class="listagem-card" *ngIf="!loading && !error">
+        <p-table [value]="currencies" class="currency-table" responsiveLayout="scroll">
             <ng-template pTemplate="header">
                 <tr>
                     <th>Código</th>
