@@ -1,4 +1,14 @@
-<div class="home">
-    <h1>Conversor de Moedas</h1>
-    <p>Bem-vindo! Utilize o menu para acessar as funcionalidades.</p>
+<div class="home-container">
+    <h1 class="title">Bem-vindo ao Conversor de Moedas</h1>
+    <p class="subtitle">Converta moedas de forma rápida e fácil</p>
+
+    <p-card class="home-card">
+        <p>Esta aplicação permite que você converta valores entre diferentes moedas e visualize o histórico de
+            conversões.</p>
+        <div class="button-group">
+            <p-button label="Listagem de Moedas" routerLink="/listagem" class="home-button"></p-button>
+            <p-button label="Conversão de Moedas" routerLink="/conversao" class="home-button"></p-button>
+            <p-button label="Histórico de Conversões" routerLink="/historico" class="home-button"></p-button>
+        </div>
+    </p-card>
 </div>
