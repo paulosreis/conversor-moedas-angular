@@ -7,14 +7,14 @@
         <form (ngSubmit)="convert()">
             <div class="form-group">
                 <label for="from">Moeda de Origem</label>
-                <p-dropdown id="from" [options]="currencies" optionLabel="description" [(ngModel)]="from" name="from"
-                    placeholder="Selecione uma moeda"></p-dropdown>
+                <p-dropdown id="from" [options]="currencies" optionLabel="description" optionValue="code"
+                    [(ngModel)]="from" name="from" placeholder="Selecione uma moeda"></p-dropdown>
             </div>
 
             <div class="form-group">
                 <label for="to">Moeda de Destino</label>
-                <p-dropdown id="to" [options]="currencies" optionLabel="description" [(ngModel)]="to" name="to"
-                    placeholder="Selecione uma moeda"></p-dropdown>
+                <p-dropdown id="to" [options]="currencies" optionLabel="description" optionValue="code" [(ngModel)]="to"
+                    name="to" placeholder="Selecione uma moeda"></p-dropdown>
             </div>
 
             <div class="form-group">
