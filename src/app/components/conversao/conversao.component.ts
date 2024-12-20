@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
@@ -23,7 +23,7 @@ import { ExchangeService } from '../../services/exchange.service';
   templateUrl: './conversao.component.html',
   styleUrls: ['./conversao.component.scss'],
 })
-export class ConversaoComponent {
+export class ConversaoComponent implements OnInit {
   from = '';
   to = '';
   amount: number | null = null;
@@ -51,7 +51,14 @@ export class ConversaoComponent {
     if (this.from && this.to && this.amount) {
       this.exchangeService.convert(this.from, this.to, this.amount).subscribe({
         next: (response) => {
-          this.result = response.result;
+          this.result = response.conversion_result;
+          this.exchangeService.saveHistory({
+            date: new Date(),
+            from: this.from,
+            to: this.to,
+            amount: this.amount,
+            result: this.result
+          }).subscribe();
         },
         error: (err) => {
           this.error = 'Erro ao realizar a conversão';
