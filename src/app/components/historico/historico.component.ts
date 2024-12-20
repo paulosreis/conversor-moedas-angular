@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TableModule } from 'primeng/table';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { MessageModule } from 'primeng/message';
+import { CardModule } from 'primeng/card';
 import { ExchangeService } from '../../services/exchange.service';
 
 @Component({
@@ -13,6 +14,7 @@ import { ExchangeService } from '../../services/exchange.service';
     TableModule,
     ProgressSpinnerModule,
     MessageModule,
+    CardModule,
   ],
   templateUrl: './historico.component.html',
   styleUrls: ['./historico.component.scss'],

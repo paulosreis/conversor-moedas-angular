@@ -3,7 +3,7 @@
 
     <p-message *ngIf="error" severity="error" text="{{ error }}"></p-message>
 
-    <p-card>
+    <p-card class="conversion-card">
         <form (ngSubmit)="convert()">
             <div class="form-group">
                 <label for="from">Moeda de Origem</label>
@@ -23,7 +23,7 @@
                     useGrouping="true"></p-inputNumber>
             </div>
 
-            <p-button label="Converter" type="submit"></p-button>
+            <p-button label="Converter" type="submit" class="convert-button"></p-button>
         </form>
     </p-card>
 

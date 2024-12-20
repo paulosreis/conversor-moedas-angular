@@ -1,23 +1,46 @@
 .historico-container {
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
 
     .title {
-        text-align: center;
+        font-size: 2rem;
         margin-bottom: 1rem;
+        color: #333;
     }
 
     .loading-spinner {
-        display: block;
         margin: 2rem auto;
     }
 
-    .historico-table {
+    .historico-card {
         width: 100%;
-        margin-top: 1rem;
+        max-width: 800px;
+        padding: 2rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        background-color: #fff;
 
-        @media (max-width: 600px) {
-            .p-datatable {
-                font-size: 0.8rem;
+        .historico-table {
+            width: 100%;
+            margin-top: 1rem;
+
+            th,
+            td {
+                padding: 0.75rem;
+                text-align: left;
+            }
+
+            th {
+                background-color: #007bff;
+                color: #fff;
+            }
+
+            td {
+                border-bottom: 1px solid #ddd;
             }
         }
     }

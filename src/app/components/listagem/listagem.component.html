@@ -1,25 +1,24 @@
 <div class="listagem-container">
     <h2 class="title">Lista de Moedas Disponíveis</h2>
 
-    <!-- Spinner de carregamento -->
     <p-progressSpinner *ngIf="loading" styleClass="loading-spinner"></p-progressSpinner>
 
-    <!-- Mensagem de erro -->
     <p-message *ngIf="error" severity="error" text="{{ error }}"></p-message>
 
-    <!-- Tabela de moedas -->
-    <p-table *ngIf="!loading && !error" [value]="currencies" class="currency-table" responsiveLayout="scroll">
-        <ng-template pTemplate="header">
-            <tr>
-                <th>Código</th>
-                <th>Descrição</th>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-currency>
-            <tr>
-                <td>{{ currency.code }}</td>
-                <td>{{ currency.description }}</td>
-            </tr>
-        </ng-template>
-    </p-table>
+    <p-card class="listagem-card">
+        <p-table *ngIf="!loading && !error" [value]="currencies" class="currency-table" responsiveLayout="scroll">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Código</th>
+                    <th>Descrição</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-currency>
+                <tr>
+                    <td>{{ currency.code }}</td>
+                    <td>{{ currency.description }}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </p-card>
 </div>
