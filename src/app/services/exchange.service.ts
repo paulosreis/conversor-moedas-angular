@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ExchangeService {
-  private apiKey = 'd9a26e1a2502b072d8f4789e';
-  private apiUrl = 'https://v6.exchangerate-api.com/v6';
+  private apiKey = environment.apiKey;
+  private apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 
