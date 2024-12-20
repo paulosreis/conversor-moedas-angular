@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { DropdownModule } from 'primeng/dropdown';
+import { SelectModule } from 'primeng/select';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
@@ -14,7 +14,7 @@ import { ExchangeService } from '../../services/exchange.service';
   imports: [
     CommonModule,
     FormsModule,
-    DropdownModule,
+    SelectModule,
     InputNumberModule,
     ButtonModule,
     CardModule,
