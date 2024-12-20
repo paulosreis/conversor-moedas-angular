@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -21,19 +21,26 @@ export class ExchangeService {
     );
   }
 
-  saveHistory(conversion: any): void {
-    const history = this.getHistory();
+  saveHistory(conversion: any): Observable<void> {
+    const history = this.getHistorySync();
     history.push(conversion);
     localStorage.setItem('conversionHistory', JSON.stringify(history));
+    return of();
   }
 
-  getHistory(): any[] {
-    return JSON.parse(localStorage.getItem('conversionHistory') || '[]');
+  getHistory(): Observable<any[]> {
+    const history = this.getHistorySync();
+    return of(history);
   }
 
-  deleteHistory(index: number): void {
-    const history = this.getHistory();
+  deleteHistory(index: number): Observable<void> {
+    const history = this.getHistorySync();
     history.splice(index, 1);
     localStorage.setItem('conversionHistory', JSON.stringify(history));
+    return of();
+  }
+
+  private getHistorySync(): any[] {
+    return JSON.parse(localStorage.getItem('conversionHistory') || '[]');
   }
 }
